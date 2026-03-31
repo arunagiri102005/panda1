@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hi Rapunzel ❤️</title>
+<link rel="icon" type="img6.jpg" href="img6.jpg">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #667eea, #764ba2);
+            text-align: center;
+            padding-top: 100px;
+        }
+
+        .box {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            width: 300px;
+            margin: auto;
+            box-shadow: 0px 5px 15px rgba(0,0,0,0.2);
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        input {
+            padding: 10px;
+            width: 90%;
+            margin: 10px 0;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            background: #667eea;
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #5a67d8;
+        }
+
+        #otpSection {
+            display: none;
+        }
+
+        #msg {
+            margin-top: 15px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box">
+        <h2>Hi Rapunzel ❤️</h2>
+
+        <input type="number" id="age" placeholder="Enter Age">
+        <input type="date" id="dob">
+
+        <button onclick="generateOTP()">Submit</button>
+
+        <div id="otpSection">
+            <input type="number" id="otpInput" placeholder="Enter OTP">
+            <button onclick="verifyOTP()">Verify OTP</button>
+        </div>
+
+        <div id="msg"></div>
+    </div>
+
+    <script>
+        let generatedOTP = "0626";
+
+        function generateOTP() {
+            let age = document.getElementById("age").value;
+            let dob = document.getElementById("dob").value;
+
+            // Correct data (your requirement)
+            let data = [
+                {age: "20", dob: "2006-02-06"}
+            ];
+
+            let validUser = data.find(user => user.age === age && user.dob === dob);
+
+            if (validUser) {
+                document.getElementById("msg").innerHTML =
+                    "Your OTP is: <b>0626</b>";
+
+                document.getElementById("otpSection").style.display = "block";
+            } else {
+                document.getElementById("msg").innerText = "Invalid Age or DOB ❌";
+            }
+        }
+
+        function verifyOTP() {
+            let enteredOTP = document.getElementById("otpInput").value;
+
+            if (enteredOTP === generatedOTP) {
+                window.location.href = "panda.html";
+            } else {
+                document.getElementById("msg").innerText = "Wrong OTP ❌";
+            }
+        }
+    </script>
+
+</body>
+</html>
